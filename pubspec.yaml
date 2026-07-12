@@ -1,5 +1,5 @@
-name: e_learning_app
-description: "A new Flutter project."
+name: learn_bridge
+description: "An e-learning app for students and admins."
 publish_to: 'none'
 version: 0.1.0+1
 
@@ -9,6 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  # Core Firebase configuration package
+  firebase_core: ^3.2.0
+  
+  # Firebase Authentication client
+  firebase_auth: ^5.1.2
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +23,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  # Asset pipeline initialization for your onboarding and splash visuals
+  assets:
+    - assets/images/
