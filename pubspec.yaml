@@ -16,6 +16,9 @@ dependencies:
   # Firebase Authentication client
   firebase_auth: ^5.1.2
 
+  assets:
+    - assets/images/
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
