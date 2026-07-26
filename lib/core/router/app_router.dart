@@ -9,19 +9,24 @@ import '../../features/courses/presentation/courses_list_screen.dart';
 import '../../features/courses/presentation/courses_details_screen.dart';
 import '../../features/courses/presentation/lesson_player_screen.dart';
 import '../../features/dock/presentation/dock_shell.dart';
-import '../../features/calendar/presentation/calendar_screen.dart';
 import '../../features/home/presentation/home_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/splash',
   routes: [
-    GoRoute(path: '/splash', builder: (context, state) => const SplashScreen()),
-    GoRoute(path: '/onboarding', builder: (context, state) => const OnboardingScreen()),
+    GoRoute(
+      path: '/splash', 
+      builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      path: '/onboarding', 
+      builder: (context, state) => const OnboardingScreen(),
+    ),
     // App dock routes
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
-        return Dockshell(navigationShell: navigationShell);
+        return DockShell(navigationShell: navigationShell);
       },
       branches: [
         // Home Page
@@ -45,7 +50,7 @@ final GoRouter appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: 'courses-list',
+              path: '/courses-list',
               builder: (context, state) => const CoursesListPage(),
             ),
           ],
@@ -54,7 +59,7 @@ final GoRouter appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: "courses-details",
+              path: "/courses-details",
               builder: (context, state) => const CourseDetailsPage(),
             ),
           ],
@@ -63,7 +68,7 @@ final GoRouter appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: 'lesson-player',
+              path: '/lesson-player',
               builder: (context, state) => const LessonPlayerPage(),
             ),
           ],
@@ -72,7 +77,7 @@ final GoRouter appRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              path: 'profile',
+              path: '/profile',
               builder: (context, state) => const ProfilePage(),
             ),
           ],
