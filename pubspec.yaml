@@ -9,15 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
+  # Go Router
+  go_router: ^14.0.0
   # Core Firebase configuration package
   firebase_core: ^3.2.0
-  
   # Firebase Authentication client
   firebase_auth: ^5.1.2
-
-  assets:
-    - assets/images/
 
 dev_dependencies:
   flutter_test:
