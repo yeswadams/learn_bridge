@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "../../data/auth_api_service.dart";
 
 class AuthState extends ChangeNotifier {
-  final AuthAPIService _apiService = AuthApiService();
+  final AuthApiService _apiService = AuthApiService();
 
   bool _isLoading = false;
   String _email = '';
