@@ -1,0 +1,26 @@
+import "package:flutter/material.dart";
+
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  bool _obscurePassword = true;
+  bool _isLoading = false;
+
+  // controllers to grab text input values
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+
+  // Clean up when screen is closed
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+
+  }
+}
