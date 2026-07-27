@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
-import 'core/routing/app_router.dart';
+import 'package:provider/provider.dart';
+import 'app.dart';
+import 'features/auth/presentation/controllers/auth_state.dart';
 
-class HitType {
-  final String name;
-  const HitType(this.name);
-}
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    MultiProvider(
+      providers: [
+      ChangeNotifierProvider<AuthState>(
+        create: (BuildContext context) => AuthState(context),
+      ),
+    ],
+    child: const MyApp(),
+    ),
+  );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+// class MainApp extends StatelessWidget {
+//   const MainApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      routerConfig: appRouter,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp.router(
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData.dark(),
+//       routerConfig: appRouter,
+//     );
+//   }
+// }
