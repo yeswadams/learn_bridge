@@ -30,7 +30,7 @@ class AuthState extends ChangeNotifier {
     _statusMessage = null;
 
     // Call your Flask API backend service
-    final success = await _apiService.requestPasswordResetOTP(_email);
+    final success = await _apiService.requestPasswordResetOtp(_email);
 
     if (success) {
       _isSuccess = true;

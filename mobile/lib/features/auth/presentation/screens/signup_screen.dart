@@ -14,13 +14,16 @@ class _SignupScreenState extends State<SignupScreen> {
   // controllers to grab text input values
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
 
   // Clean up when screen is closed
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
   }
 }
