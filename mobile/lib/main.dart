@@ -9,7 +9,7 @@ void main() {
     MultiProvider(
       providers: [
       ChangeNotifierProvider<AuthState>(
-        create: (BuildContext context) => AuthState(context),
+        create: (BuildContext context) => AuthState(),
       ),
     ],
     child: const MyApp(),
