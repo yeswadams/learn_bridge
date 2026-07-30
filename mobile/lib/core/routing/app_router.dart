@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
-import '../../features/calendar/presentation/calendar_screen.dart';
+import '../../features/calendar/presentation/screens/calendar_screen.dart';
 import '../../features/courses/presentation/screens/courses_list_screen.dart';
 import '../../features/courses/presentation/screens/course_details_screen.dart';
 import '../../features/courses/presentation/screens/lesson_player_screen.dart';
@@ -15,12 +15,9 @@ import '../../features/profile/presentation/screens/profile_screen.dart';
 final GoRouter appRouter = GoRouter(
   initialLocation: '/splash',
   routes: [
+    GoRoute(path: '/splash', builder: (context, state) => const SplashScreen()),
     GoRoute(
-      path: '/splash', 
-      builder: (context, state) => const SplashScreen(),
-    ),
-    GoRoute(
-      path: '/onboarding', 
+      path: '/onboarding',
       builder: (context, state) => const OnboardingScreen(),
     ),
     // App dock routes
@@ -32,8 +29,9 @@ final GoRouter appRouter = GoRouter(
         // Home Page
         StatefulShellBranch(
           routes: [
-            GoRoute(path: '/home',
-            builder: (context, state) => const HomePage(),
+            GoRoute(
+              path: '/home',
+              builder: (context, state) => const HomeScreen(),
             ),
           ],
         ),
@@ -42,7 +40,7 @@ final GoRouter appRouter = GoRouter(
           routes: [
             GoRoute(
               path: '/calendar',
-              builder: (context, state) => const CalendarPage(),
+              builder: (context, state) => const CalendarScreen(),
             ),
           ],
         ),
@@ -51,7 +49,7 @@ final GoRouter appRouter = GoRouter(
           routes: [
             GoRoute(
               path: '/courses-list',
-              builder: (context, state) => const CoursesListPage(),
+              builder: (context, state) => const CoursesListScreen(),
             ),
           ],
         ),
@@ -60,7 +58,7 @@ final GoRouter appRouter = GoRouter(
           routes: [
             GoRoute(
               path: "/courses-details",
-              builder: (context, state) => const CourseDetailsPage(),
+              builder: (context, state) => const CourseDetailsScreen(),
             ),
           ],
         ),
@@ -69,7 +67,7 @@ final GoRouter appRouter = GoRouter(
           routes: [
             GoRoute(
               path: '/lesson-player',
-              builder: (context, state) => const LessonPlayerPage(),
+              builder: (context, state) => const LessonPlayerScreen(),
             ),
           ],
         ),
@@ -78,11 +76,11 @@ final GoRouter appRouter = GoRouter(
           routes: [
             GoRoute(
               path: '/profile',
-              builder: (context, state) => const ProfilePage(),
+              builder: (context, state) => const ProfileScreen(),
             ),
           ],
         ),
-      ] 
-    )
+      ],
+    ),
   ],
 );
