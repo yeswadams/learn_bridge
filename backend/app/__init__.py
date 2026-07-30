@@ -1,17 +1,16 @@
 # Application Factory
 
-from flask import Flask
+from flask import Flask, Blueprint
 from app.features.programs.routes import programs_bp
 from app.features.users.routes import users_bp
+from app.core.health.routes import health_bp
 
 def create_app():
     app = Flask(__name__)
 
-    app.register_blueprint(
-        programs_bp, 
-        users_bp,
-        url_prefix="/api/vi/programs"
-    )
+    app.register_blueprint(programs_bp, url_prefix="/api/v1/programs")
+    app.register_blueprint(users_bp, url_prefix="/api/v1/users")
+    app.register_blueprint(health_bp, url_prefix="/api/v1/health")
 
     @app.get('/')
     def index():
