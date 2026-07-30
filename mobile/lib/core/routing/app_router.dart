@@ -5,12 +5,12 @@ import '../../features/splash/presentation/splash_screen.dart';
 import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/calendar/presentation/calendar_screen.dart';
-import '../../features/courses/presentation/courses_list_screen.dart';
-import '../../features/courses/presentation/courses_details_screen.dart';
-import '../../features/courses/presentation/lesson_player_screen.dart';
+import '../../features/courses/presentation/screens/courses_list_screen.dart';
+import '../../features/courses/presentation/screens/course_details_screen.dart';
+import '../../features/courses/presentation/screens/lesson_player_screen.dart';
 import '../../features/dock/presentation/dock_shell.dart';
 import '../../features/home/presentation/home_screen.dart';
-import '../../features/profile/presentation/profile_screen.dart';
+import '../../features/profile/presentation/screens/profile_screen.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/splash',
