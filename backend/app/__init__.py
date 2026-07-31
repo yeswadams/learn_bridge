@@ -24,12 +24,9 @@ def register_bp(app):
     )
     
 
-def create_app():
+def create_app(config_class=DevelopmentConfig):
     app = Flask(__name__)
-
-    app.config.from_object(
-        DevelopmentConfig
-    )
+    app.config.from_object(config_class)
 
     register_bp(app)
     return app
