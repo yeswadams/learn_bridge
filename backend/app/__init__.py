@@ -3,6 +3,9 @@ from flask import Flask
 
 # config
 from app.core.config import DevelopmentConfig
+from app.extensions import db
+from app.extensions import ma 
+from app.extensions import migrate
 
 #blue prints
 from app.features.programs.routes import programs_bp
@@ -24,12 +27,15 @@ def register_bp(app):
     )
     
 
-def create_app():
+def create_app(config_class=DevelopmentConfig):
     app = Flask(__name__)
+    app.config.from_object(config_class)
 
-    app.config.from_object(
-        DevelopmentConfig
-    )
+    db.init_app(app)
+
+    migrate.init_app(app, db)
+
+    ma.init_app(app)
 
     register_bp(app)
     return app
