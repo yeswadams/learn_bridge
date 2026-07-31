@@ -8,6 +8,9 @@ flask = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 marshmallow = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
+psycopg = {extras = ["binary"], version = "*"}
 
 [dev-packages]
 

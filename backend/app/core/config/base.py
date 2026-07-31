@@ -12,7 +12,7 @@ class Config():
     # DB Config
     SQLALCHEMY_DATABASE_URI = os.getenv(
         "DATABASE_URL",
-        "postgresql://postgres:postgres@localhost:5432/learnbridge"
+        "postgresql+psycopg://postgres:postgres@localhost:5432/learnbridge"
     )
 
     #SQLAlchemy Settings

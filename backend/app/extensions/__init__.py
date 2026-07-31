@@ -1,7 +1,9 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from marshmallow import Schema
+from .database import db
+from .marshmallow import ma
+from .migrate import migrate
 
-db = SQLAlchemy()
-
-migrate = Migrate()
+__all__: list[str] = [
+    "db",
+    "migrate",
+    "ma"
+]
