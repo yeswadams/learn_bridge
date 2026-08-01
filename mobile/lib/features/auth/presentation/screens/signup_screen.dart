@@ -8,8 +8,8 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  bool _obscurePassword = true;
-  bool _isLoading = false;
+  final bool _obscurePassword = true;
+  final bool _isLoading = false;
 
   // controllers to grab text input values
   final TextEditingController _emailController = TextEditingController();

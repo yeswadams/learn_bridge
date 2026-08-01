@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
 class ContentSection extends StatelessWidget {
-  const ContentSection();
+  const ContentSection({super.key});
 
   @override
   Widget build(BuildContext context) {
