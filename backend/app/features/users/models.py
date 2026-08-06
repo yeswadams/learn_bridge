@@ -18,7 +18,7 @@ class UserModel(db.Model):
         unique=True, 
         nullable=False
     )
-    _password: Mapped[str] = mapped_column(
+    password: Mapped[str] = mapped_column(
         String(255), 
         nullable=False
     )
