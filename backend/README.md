@@ -40,3 +40,60 @@ app/
 
 ### The API Will be accessible at:
 ```http://127.0.0.1:5000```
+
+Users
+------
+id
+full_name
+email
+password_hash
+role
+
+        │
+        │
+        ▼
+
+Enrollments
+-----------
+id
+user_id
+course_id
+enrolled_at
+
+        │
+        ▼
+
+Progress
+---------
+id
+enrollment_id
+last_lesson_id
+percentage
+completed
+
+Courses
+--------
+id
+title
+description
+category_id
+price
+duration_minutes
+
+        │
+        │
+        ▼
+
+Lessons
+--------
+id
+course_id
+title
+content
+video_url
+lesson_order
+
+Categories
+----------
+id
+name
