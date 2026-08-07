@@ -1,11 +1,11 @@
 from datetime import datetime, timezone
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.extensions.database import db
 from sqlalchemy import String, Integer, DateTime
 from typing import Optional
 
 
-class UserModel(db.Model):
+class User(db.Model):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True) 
@@ -41,4 +41,6 @@ class UserModel(db.Model):
     )
 
     #Relationships:
-    # enrollements: Mapped[]
+    enrollements: Mapped[list["Enrollment"]] = relationship(back_populates='')
+    certificates: Mapped[list["Certificate"]] = relationship(back_populates='')
+    courses: Mapped[list["Course"]] = relationship(back_populates='')

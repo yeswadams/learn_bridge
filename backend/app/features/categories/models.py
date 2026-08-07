@@ -1,7 +1,6 @@
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from app.extensions.database import db
 from sqlalchemy import String
-from app.features.courses import Course
 
 
 class Category(db.Model):
