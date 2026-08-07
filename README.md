@@ -55,9 +55,9 @@ LearnBridge is designed around the following objectives:
 
 ---
 
-# 👥 Target Users
+# Target Users
 
-## 👨‍🎓 Learners
+## Learners
 
 LearnBridge is designed for learners such as:
 
@@ -108,7 +108,7 @@ As the platform evolves, administrator functionality may expand into a dedicated
 
 ---
 
-# Technology Stack
+# Tech Stack
 
 ## Mobile Application
 
@@ -817,7 +817,7 @@ JWT_SECRET_KEY=your-development-jwt-secret
 
 ---
 
-# 🤝 Development Philosophy
+# Development Philosophy
 
 LearnBridge is being developed as a practical full-stack learning project with an emphasis on understanding how modern applications actually work.
 
@@ -860,7 +860,7 @@ Iteration
 
 ---
 
-# 📚 Learning Objectives
+# Learning Objectives
 
 While building LearnBridge, the project will be used to develop practical mastery of:
 
@@ -947,7 +947,7 @@ The repository structure may evolve as the application grows.
 
 ---
 
-# 📝 Project Details
+# Project Details
 
 * **Project:** LearnBridge
 * **Project Type:** Mobile Learning Management System
