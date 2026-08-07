@@ -10,7 +10,7 @@ The goal of LearnBridge is not only to provide a functional learning experience,
 
 ---
 
-## 🚀 Project Overview
+## Project Overview
 
 Many educational institutions and training providers still rely on fragmented websites, social media platforms, or manual communication to advertise and manage training programs.
 
@@ -31,7 +31,7 @@ The platform provides two primary user experiences:
 
 ---
 
-## 🎯 Core Objectives
+## Core Objectives
 
 LearnBridge is designed around the following objectives:
 
@@ -87,7 +87,7 @@ Learners will be able to:
 
 ---
 
-## 🛡️ Administrators
+## Administrators
 
 Administrators represent users responsible for managing the learning platform and its educational content.
 
@@ -108,7 +108,7 @@ As the platform evolves, administrator functionality may expand into a dedicated
 
 ---
 
-# 🛠️ Technology Stack
+# Technology Stack
 
 ## Mobile Application
 
@@ -139,7 +139,7 @@ As the platform evolves, administrator functionality may expand into a dedicated
 
 ---
 
-# 🏗️ Architecture
+# Architecture
 
 LearnBridge follows a **Feature-First Architecture**.
 
@@ -177,7 +177,7 @@ PostgreSQL provides persistent storage for users, programs, enrollments, learnin
 
 ---
 
-# 📱 Flutter Application Architecture
+# Flutter Application Architecture
 
 The Flutter application follows a feature-first structure.
 
@@ -284,7 +284,7 @@ Examples:
 
 ---
 
-# 🐍 Flask Backend Architecture
+# Flask Backend Architecture
 
 The Flask backend also follows a feature-oriented structure.
 
@@ -347,7 +347,7 @@ The guiding principle is that functionality belonging to the same business domai
 
 ---
 
-# 🔄 Request & Response Architecture
+# Request & Response Architecture
 
 When a learner interacts with LearnBridge, data flows through multiple layers.
 
@@ -411,7 +411,7 @@ This separation allows each part of the system to have a clear responsibility.
 
 ---
 
-# 🗄️ Data & Domain Model
+# Data & Domain Model
 
 The initial LearnBridge domain is expected to grow around the following concepts:
 
@@ -459,7 +459,7 @@ Database relationships, constraints, indexes, and business rules will be designe
 
 ---
 
-# 🗺️ Application Navigation Flow
+# Application Navigation Flow
 
 The initial learner navigation flow is:
 
@@ -493,9 +493,9 @@ Profile functionality is accessible to authenticated learners.
 
 ---
 
-# 🧭 User Journeys
+# User Journeys
 
-## 📖 Learner Journey
+## Learner Journey
 
 ```text
 Register
@@ -517,7 +517,7 @@ Track Learning Progress
 Complete Learning
 ```
 
-## 🛡️ Administrator Journey
+## Administrator Journey
 
 ```text
 Login
@@ -539,9 +539,9 @@ Manage Platform Content
 
 ---
 
-# 🌟 Core Feature Blueprint
+# Core Feature Blueprint
 
-## 🔒 Authentication
+## Authentication
 
 The authentication system will provide:
 
@@ -555,7 +555,7 @@ The authentication system will provide:
 
 ---
 
-## 🏡 Home
+## Home
 
 The home experience will provide learners with:
 
@@ -568,7 +568,7 @@ The home experience will provide learners with:
 
 ---
 
-## 🔍 Programs
+## Programs
 
 Learners will be able to:
 
@@ -580,7 +580,7 @@ Learners will be able to:
 
 ---
 
-## 📄 Program Details
+## Program Details
 
 Program details will include:
 
@@ -593,7 +593,7 @@ Program details will include:
 
 ---
 
-## 📚 My Learning
+## My Learning
 
 Learners will be able to:
 
@@ -605,7 +605,7 @@ Learners will be able to:
 
 ---
 
-## 👤 Profile
+## Profile
 
 Learners will be able to:
 
@@ -617,7 +617,7 @@ Learners will be able to:
 
 ---
 
-# 🧪 Testing Strategy
+# Testing Strategy
 
 Testing will be introduced alongside feature development rather than being treated as a final step.
 
@@ -664,47 +664,47 @@ The objective is to build confidence that each feature works correctly across bo
 
 ---
 
-# 🔮 Roadmap
+# Roadmap
 
 LearnBridge is intended to evolve beyond the initial MVP.
 
 Potential future capabilities include:
 
-### 📜 Certificates
+### Certificates
 
 Generate certificates when learners successfully complete programs.
 
-### 🔔 Push Notifications
+### Push Notifications
 
 Provide real-time notifications for learning activities, announcements, and program updates.
 
-### 💳 Payments
+### Payments
 
 Support paid programs and premium learning experiences through payment providers such as M-Pesa and Stripe.
 
-### ✈️ Offline Learning
+### Offline Learning
 
 Allow learners to access selected learning content during periods of limited connectivity and synchronize progress when connectivity returns.
 
-### 🎥 Video Learning
+### Video Learning
 
 Introduce video-based lessons with playback and learning progress tracking.
 
-### 🌓 Dark Mode
+### Dark Mode
 
 Provide system-aware and user-controlled application themes.
 
-### 💬 Instructor Communication
+### Instructor Communication
 
 Introduce real-time communication between learners and instructors.
 
-### 📱 Dedicated Administration
+### Dedicated Administration
 
 Expand administrative functionality into a dedicated web or mobile administration interface for managing programs, learners, enrollments, and platform content.
 
 ---
 
-# ⚙️ Local Development
+# Local Development
 
 ## Prerequisites
 
@@ -721,7 +721,7 @@ The exact supported versions will be documented as the project stabilizes.
 
 ---
 
-## 📱 Flutter Application
+## Flutter Application
 
 Install Flutter dependencies:
 
@@ -743,7 +743,7 @@ flutter run
 
 ---
 
-## 🐍 Flask Backend
+## Flask Backend
 
 The backend setup will include:
 
@@ -790,7 +790,7 @@ The exact commands and environment configuration will be documented as the backe
 
 ---
 
-# 🔐 Environment Configuration
+# Environment Configuration
 
 Sensitive configuration should never be committed directly to source control.
 
