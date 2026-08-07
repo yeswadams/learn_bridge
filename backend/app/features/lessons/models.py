@@ -9,8 +9,13 @@ class Lessons(db.Model):
     __tablename__="lessons"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    course_id: Mapped[int] = relationship(foreign_key='courses.id')
+    course_id: Mapped[int] = mapped_column(foreign_key='courses.id', nullable=False)
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     content: Mapped[str] = mapped_column(String(5000), nullable=False)
     video_url: Mapped[str] = mapped_column(String(500), nullable=False)
     lesson_order: Mapped[int] = mapped_column(nullable=False)
+
+    course = relationship(
+        "CourseModel",
+        back_populates="lessons"
+    )
