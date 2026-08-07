@@ -33,6 +33,8 @@ def create_app(config_class=DevelopmentConfig):
 
     db.init_app(app)
 
+    import app.features
+
     migrate.init_app(app, db)
 
     ma.init_app(app)
