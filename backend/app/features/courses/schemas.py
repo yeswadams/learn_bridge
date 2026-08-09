@@ -1,6 +1,7 @@
 from marshmallow import fields
 from app.extensions.marshmallow import ma
 from app.features.courses.models import Course
+from app.features.lessons.schemas import LessonSchema
 
 class CourseSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
