@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from app.features.categories.models import Category
     from app.features.lessons.models import Lesson
     from app.features.enrollments.models import Enrollment
+    from app.features.quiz.models import Quiz
 
 class Course(db.Model):
     __tablename__ = "course"
@@ -53,6 +54,10 @@ class Course(db.Model):
     )
     enrollments: Mapped[List["Enrollment"]] = relationship(
         back_populates="course", 
+        cascade="all, delete-orphan"
+    )
+    quizzes: Mapped[List["Quiz"]] = relationship(
+        back_populates="course",
         cascade="all, delete-orphan"
     )
 

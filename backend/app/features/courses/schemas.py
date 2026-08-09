@@ -1,7 +1,6 @@
 from marshmallow import fields
 from app.extensions.marshmallow import ma
 from app.features.courses.models import Course
-from app.features.lessons.schemas import LessonSchema
 
 class CourseSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
@@ -9,17 +8,22 @@ class CourseSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
         include_fk = True
 
-    # Explicitly pull down cleanly serilized nested schemas
-    category = fields.Nested("app.features.categories.schemas.CategorySchema", exclude=("courses", ))
+    # Pure string paths completely eliminate circular imports at runtime
+    category = fields.Nested("app.features.categories.schemas.CategorySchema", exclude=["courses"])
     instructor = fields.Nested("app.features.auth.schemas.UserSchema")
-
-    # Leverage the database-level `order_by` sequence configured earlier
+    
+    # Safely lazy-evaluate the Lesson schema sequence
     lessons = fields.List(
-        fields.Nested(LessonSchema, exclude=("course_id", ))
+        fields.Nested("app.features.lessons.schemas.LessonSchema", exclude=["course_id"])
+    )
+    
+    # Seamlessly incorporate the quiz tracking slice
+    quizzes = fields.List(
+        fields.Nested("app.features.quiz.schemas.QuizSchema", exclude=["course_id"])
     )
 
 class CourseCreateSchema(ma.Schema):
-    """Strictly enforces required fields for adding a new program"""
+    """Strictly enforces required fields for adding a new program."""
     title = fields.String(required=True, validate=lambda x: len(x) >= 3)
     description = fields.String(required=True)
     price = fields.Decimal(required=True, places=2)
