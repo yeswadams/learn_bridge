@@ -7,7 +7,7 @@ from app.extensions.database import db
 from app.features.auth.models import User
 from app.features.auth.models import UserRole
 
-def is_admin():
+def admin_required():
     """Custom decorator to restrict api endpoint access to accounts that only have admin rights"""
     def decorator(f):
         @wraps(f)
@@ -56,7 +56,7 @@ def instructor_required():
     return decorator
 
 
-def is_student():
+def student_required():
     """Custom decorator to ensure student access only"""
     def decorator(f):
         @wraps
