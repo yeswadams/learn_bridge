@@ -22,8 +22,8 @@ class User(db.Model):
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     full_name: Mapped[str] = mapped_column(String(120), nullable=False)
-    email: Mapped[str] = mapped_column(String(255), uunique=True, nullable=False, index=True)
-    password_hash: Mapped[str] = mapped_column(String(255), nullbale=False)
+    email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False, index=True)
+    password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
     role: Mapped[UserRole] = mapped_column(
         Enum(UserRole, native_enum=True, name="User_role"),
         default=UserRole.STUDENT,
