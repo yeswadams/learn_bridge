@@ -14,6 +14,7 @@ if TYPE_CHECKING:
 
 class UserRole(enum.Enum):
     STUDENT = "student"
+    INSTRUCTOR = "instructor"
     ADMINISTRATOR = "administrator"
 
 class User(db.Model):
