@@ -1,6 +1,7 @@
 from .models import Category
-from .routes import Cate
+from .routes import CategoryRoute
 
 __all__ = [
-    "Category"
+    "Category",
+    "CategoryRoute"
 ]
