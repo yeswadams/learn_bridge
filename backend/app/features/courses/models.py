@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from app.features.quiz.models import Quiz
 
 class Course(db.Model):
-    __tablename__ = "course"
+    __tablename__ = "courses"
 
     id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), 
@@ -38,13 +38,13 @@ class Course(db.Model):
         nullable=False
     )
     category_id: Mapped[Optional[uuid.UUID]] = mapped_column(
-        ForeignKey("category.id", ondelete="SET NULL")
+        ForeignKey("categories.id", ondelete="SET NULL")
     )
     instructor_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("users.id", ondelete="RESTRICT"), nullable=False
     )
 
-    # Relationship
+    # Relationships
     category: Mapped[Optional["Category"]] = relationship(back_populates="courses")
     instructor: Mapped["User"] = relationship(back_populates="courses_created")
     lessons: Mapped[List["Lesson"]] = relationship(
