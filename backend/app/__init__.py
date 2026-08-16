@@ -30,9 +30,12 @@ def create_app(config_class=DevelopmentConfig):
 
     # extensions
     db.init_app(app)
-    jwt.init_app(app)
     ma.init_app(app)
     migrate.init_app(app, db)
+    jwt.init_app(app)
+
+    # models
+    from app import models
 
     # register bps
     register_bp(app)

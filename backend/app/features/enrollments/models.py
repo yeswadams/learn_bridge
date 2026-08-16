@@ -34,11 +34,13 @@ class Enrollment(db.Model):
         default=uuid.uuid4
     )
     user_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
         ForeignKey("users.id", ondelete="CASCADE"), 
         nullable=False
     )
     course_id: Mapped[uuid.UUID] = mapped_column(
-        ForeignKey("users.id", ondelete="CASCADE"),
+        UUID(as_uuid=True),
+        ForeignKey("courses.id", ondelete="CASCADE"),
         nullable=False
     )
     status: Mapped[ProgressStatus] = mapped_column(
@@ -84,6 +86,6 @@ class Enrollment(db.Model):
             "idx_enrollments_lookup", 
             "user_id", 
             "status"
-        )
+        ),
     )
 

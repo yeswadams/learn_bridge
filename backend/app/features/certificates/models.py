@@ -23,12 +23,14 @@ class Certificate(db.Model):
         dafault=uuid.uuid4
     )
     user_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
         ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False
     )
 
     # We reference the targeted PK cleanly without needing a back-populating the course ref in Course
     course_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
         ForeignKey("courses.id", ondelete="CASCADE"),
         nullable=False
     )
@@ -39,12 +41,14 @@ class Certificate(db.Model):
         nullable=False
     )
 
-    # Relationship
+    # Relationships
     user: Mapped["User"] = relationship(
-        backpopulates="certificates"
+        back_populates="certificates"
     )
 
-    course: Mapped["Course"] = relationship()
+    course: Mapped["Course"] = relationship(
+        back_populates="certificates"
+    )
 
     __table_args__ = (
         UniqueConstraint(
