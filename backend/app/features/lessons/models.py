@@ -58,5 +58,10 @@ class Lesson(db.Model):
         UniqueConstraint(
             "course_id", 
             "lesson_order", 
+<<<<<<< Updated upstream
             name="uq_course_lesson_order")
+=======
+            name="uq_course_lesson_order"
+        ),
+>>>>>>> Stashed changes
     )
