@@ -1,8 +1,13 @@
 import uuid
+from typing import TYPE_CHECKING
 from datetime import datetime, timezone
-from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, Integer, DateTime, UUID, ForeignKey, UniqueConstraint
-from typing import Optional, TYPE_CHECKING
+from sqlalchemy import (
+    DateTime,
+    ForeignKey,
+    UniqueConstraint
+)
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.dialects.postgresql import UUID
 from app.extensions.database import db
 
 if TYPE_CHECKING:
@@ -24,9 +29,27 @@ class Certificate(db.Model):
 
     # We reference the targeted PK cleanly without needing a back-populating the course ref in Course
     course_id: Mapped[uuid.UUID] = mapped_column(
-        distinct_target_key="Course.id"
+        ForeignKey("courses.id", ondelete="CASCADE"),
+        nullable=False
     )
 
+    issued_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc),
+        nullable=False
+    )
+
+    # Relationship
+    user: Mapped["User"] = relationship(
+        backpopulates="certificates"
+    )
+
+    course: Mapped["Course"] = relationship()
+
     __table_args__ = (
-        UniqueConstraint("user_id", "course_id", name="unique_user_course_certificate")
+        UniqueConstraint(
+            "user_id", 
+            "course_id", 
+            name="unique_user_course_certificate"
+        )
     )

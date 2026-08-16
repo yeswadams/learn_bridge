@@ -34,6 +34,14 @@ class User(db.Model):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
     # Relationships - Used String references to avoid runtime circular import
-    enrollments: Mapped[List["Enrollment"]] = relationship(back_populates='user', cascade='all, delete-orphan')
-    certificates: Mapped[List["Certificate"]] = relationship(back_populates='user', cascade="all, delete-orphan")
-    courses_created: Mapped[List["Course"]] = relationship(back_populates="instructor")
+    enrollments: Mapped[List["Enrollment"]] = relationship(
+        back_populates='user', 
+        cascade='all, delete-orphan'
+    )
+    certificates: Mapped[List["Certificate"]] = relationship(
+        back_populates='user', 
+        cascade="all, delete-orphan"
+    )
+    courses_created: Mapped[List["Course"]] = relationship(
+        back_populates="instructor"
+    )

@@ -18,8 +18,8 @@ class Quiz(db.Model):
         default=uuid.uuid4
     )
     course_id: Mapped[uuid.UUID] = mapped_column(
-        ForeignKey("courses.id"), 
-        ondelete=uuid.uuid4
+        ForeignKey("courses.id", ondelete="CASCADE"), 
+        nullable=False
     )
     title: Mapped[str] = mapped_column(
         String(255), 
@@ -32,11 +32,14 @@ class Quiz(db.Model):
     )
 
     # Relationships
-    course: Mapped["Course"] = relationship(back_populates="quizzes")
+    course: Mapped["Course"] = relationship(
+        back_populates="quizzes"
+    )
 
     __table_args__ = (
         CheckConstraint(
-            "passing_score BETWEEN 0 AND 100", name="check_quiz_passing_score_bounds"
+            "passing_score BETWEEN 0 AND 100", 
+            name="check_quiz_passing_score_bounds"
         )
     )
 

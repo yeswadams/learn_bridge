@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship, Mapped, mapped_column
 from app.extensions.database import db
 from sqlalchemy import String
 from sqlalchemy.dialects.postgresql import UUID
-from typing import  TYPE_CHECKING
+from typing import  TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from app.features.courses.models import Course
@@ -19,6 +19,7 @@ class Category(db.Model):
     )
     name: Mapped[str] = mapped_column(
         String(100),
+        unique=True,
         nullable=False
     )
     slug: Mapped[str] = mapped_column(
@@ -28,6 +29,6 @@ class Category(db.Model):
     )
 
     # Relationship
-    courses: Mapped[list["Course"]] = relationship(
+    courses: Mapped[List["Course"]] = relationship(
         back_populates="category"
     )

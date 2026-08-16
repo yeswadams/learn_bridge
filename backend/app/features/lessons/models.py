@@ -1,9 +1,14 @@
 import uuid
-from datetime import datetime, timezone
-from sqlalchemy import String, Integer, ForeignKey, Text, UniqueConstraint, DateTime, Boolean
+from typing import Optional, TYPE_CHECKING, List
+from sqlalchemy import (
+    String, 
+    Integer, 
+    ForeignKey, 
+    Text, 
+    UniqueConstraint
+)
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from typing import Optional, TYPE_CHECKING, List
 from app.extensions.database import db
 
 if TYPE_CHECKING:
@@ -45,9 +50,13 @@ class Lesson(db.Model):
         back_populates="lessons"
     )
     progress_records: Mapped[List["Progress"]] = relationship(
-        back_populates="lesson", cascade="all, delete-orphan"
+        back_populates="lesson", 
+        cascade="all, delete-orphan"
     )
 
     __table_args__ = (
-        UniqueConstraint("course_id", "lesson_order", name="uq_course_lesson_order")
+        UniqueConstraint(
+            "course_id", 
+            "lesson_order", 
+            name="uq_course_lesson_order")
     )
