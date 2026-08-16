@@ -10,5 +10,11 @@ class QuizSchema(ma.SQLAlchemyAutoSchema):
 
 class QuizCreateSchema(ma.Schema):
     """Validates incoming client requests bodies when the admin creates a quiz to a course"""
-    title = fields.String(required=True, validate=lambda x: 0 < len(x) <= 255)
-    passing_score = fields.Integer(required=True, validate=lambda x: 0 <= x <= 100)
+    title = fields.String(
+        required=True, 
+        validate=lambda x: 0 < len(x) <= 255
+    )
+    passing_score = fields.Integer(
+        required=True, 
+        validate=lambda x: 0 <= x <= 100
+    )

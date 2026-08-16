@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from app.features.lessons.models import Lesson
     from app.features.enrollments.models import Enrollment
     from app.features.quiz.models import Quiz
+    from app.features.certificates.models import Certificate
 
 class Course(db.Model):
     __tablename__ = "courses"
@@ -40,12 +41,23 @@ class Course(db.Model):
     category_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("categories.id", ondelete="SET NULL")
     )
+    course_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("courses.id", ondelete="CASCADE"),
+        nullable=False
+    )
     instructor_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("users.id", ondelete="RESTRICT"), nullable=False
     )
 
     # Relationships
-    category: Mapped[Optional["Category"]] = relationship(back_populates="courses")
+    course: Mapped["Course"] = relationship()
+    user: Mapped["User"] = relationship(
+        back_populates="certificates"
+    )
+    category: Mapped[Optional["Category"]] = relationship(
+        back_populates="courses"
+    )
     instructor: Mapped["User"] = relationship(back_populates="courses_created")
     lessons: Mapped[List["Lesson"]] = relationship(
         back_populates="course", 
@@ -57,6 +69,10 @@ class Course(db.Model):
         cascade="all, delete-orphan"
     )
     quizzes: Mapped[List["Quiz"]] = relationship(
+        back_populates="course",
+        cascade="all, delete-orphan"
+    )
+    certificates: Mapped[List["Certificate"]] = relationship(
         back_populates="course",
         cascade="all, delete-orphan"
     )

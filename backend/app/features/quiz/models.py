@@ -18,6 +18,7 @@ class Quiz(db.Model):
         default=uuid.uuid4
     )
     course_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
         ForeignKey("courses.id", ondelete="CASCADE"), 
         nullable=False
     )
