@@ -1,2 +1,8 @@
+#type checker
 .mypy_cache
+
+# virtual environment
 .venv
+
+#ide
+.vscode
