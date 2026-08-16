@@ -39,8 +39,8 @@ class Quiz(db.Model):
 
     __table_args__ = (
         CheckConstraint(
-            "passing_score BETWEEN 0 AND 100", 
+            "passing_score BETWEEN 0 AND 100",
             name="check_quiz_passing_score_bounds"
-        )
+        ),
     )
 

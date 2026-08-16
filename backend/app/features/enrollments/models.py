@@ -74,17 +74,17 @@ class Enrollment(db.Model):
 
     __table_args__ = (
         UniqueConstraint(
-            "user_id", 
-            "course_id", 
+            "user_id",
+            "course_id",
             name="unique_user_course_enrollment"
         ),
         CheckConstraint(
-            "progress_percentage BETWEEN 0 AND 100", 
+            "progress_percentage BETWEEN 0 AND 100",
             name="check_progress_percentage_bounds"
         ),
         Index(
-            "idx_enrollments_lookup", 
-            "user_id", 
+            "idx_enrollments_lookup",
+            "user_id",
             "status"
         ),
     )

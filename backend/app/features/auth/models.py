@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from app.features.enrollments.models import Enrollment
     from app.features.certificates.models import Certificate
     from app.features.courses.models import Course
+    from app.features.progress.models import Progress
 
 class UserRole(enum.Enum):
     STUDENT = "student"
@@ -40,6 +41,10 @@ class User(db.Model):
     )
     certificates: Mapped[List["Certificate"]] = relationship(
         back_populates='user', 
+        cascade="all, delete-orphan"
+    )
+    progress_records: Mapped[List["Progress"]] = relationship(
+        back_populates="user",
         cascade="all, delete-orphan"
     )
     courses_created: Mapped[List["Course"]] = relationship(

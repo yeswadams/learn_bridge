@@ -56,8 +56,8 @@ class Lesson(db.Model):
 
     __table_args__ = (
         UniqueConstraint(
-            "course_id", 
-            "lesson_order", 
+            "course_id",
+            "lesson_order",
             name="uq_course_lesson_order"
         ),
     )

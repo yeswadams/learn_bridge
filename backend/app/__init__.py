@@ -1,28 +1,29 @@
 # Application Factory
 from flask import Flask
+
 # config
 from app.core.config import DevelopmentConfig
 from app.extensions import db, ma, migrate, jwt
-#blue prints
-from app.features.courses.routes import courses_bp
-from app.features.auth.routes import auth_bp
-from app.core.health.routes import health_bp
+
 
 def register_bp(app):
+    from app.core.health.routes import health_bp
+    from app.features.auth.routes import auth_bp
+    from app.features.courses.routes import courses_bp
+
     app.register_blueprint(
-            health_bp, 
+            health_bp,
             url_prefix="/api/v1/health"
     )
     app.register_blueprint(
-        courses_bp, 
+        courses_bp,
         url_prefix="/api/v1/programs"
     )
     app.register_blueprint(
-        auth_bp, 
+        auth_bp,
         url_prefix="/api/v1/users"
     )
-    
-    
+
 
 def create_app(config_class=DevelopmentConfig):
     app = Flask(__name__)
@@ -34,7 +35,7 @@ def create_app(config_class=DevelopmentConfig):
     migrate.init_app(app, db)
     jwt.init_app(app)
 
-    # models
+    # models must be imported before schema introspection runs in any route module
     from app import models
 
     # register bps
