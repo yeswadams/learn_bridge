@@ -41,20 +41,11 @@ class Course(db.Model):
     category_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         ForeignKey("categories.id", ondelete="SET NULL")
     )
-    course_id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True),
-        ForeignKey("courses.id", ondelete="CASCADE"),
-        nullable=False
-    )
     instructor_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("users.id", ondelete="RESTRICT"), nullable=False
     )
 
     # Relationships
-    course: Mapped["Course"] = relationship()
-    user: Mapped["User"] = relationship(
-        back_populates="certificates"
-    )
     category: Mapped[Optional["Category"]] = relationship(
         back_populates="courses"
     )

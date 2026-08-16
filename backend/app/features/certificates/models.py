@@ -20,7 +20,7 @@ class Certificate(db.Model):
     id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
         primary_key=True,
-        dafault=uuid.uuid4
+        default=uuid.uuid4
     )
     user_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True),
@@ -52,8 +52,8 @@ class Certificate(db.Model):
 
     __table_args__ = (
         UniqueConstraint(
-            "user_id", 
-            "course_id", 
+            "user_id",
+            "course_id",
             name="unique_user_course_certificate"
-        )
+        ),
     )

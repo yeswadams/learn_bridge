@@ -43,9 +43,9 @@ class Progress(db.Model):
 
     __table_args__ = (
         UniqueConstraint(
-            "user_id", 
-            "lesson_id", 
+            "user_id",
+            "lesson_id",
             name="unique_user_lesson_progress"
-        )
+        ),
     )
 
