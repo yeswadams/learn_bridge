@@ -1,15 +1,19 @@
 # The Auth Business Logic 
-import uuid
 from flask_jwt_extended import create_access_token
+from sqlalchemy.exc import IntegrityError
 from app.extensions.database import db
 from app.features.auth.models import User, UserRole
-from werkzeug.security import generate_password_hash, check_password_hash
+from app.features.auth.services.password_service import PasswordService
+
 
 class AuthService:
     """Handles business logic for registering users, checking login passwords, and generating tokens"""
 
-    @staticmethod
-    def register_user(data: dict) -> User:
+    def __init__(self):
+        # this relationship is called composition
+        self.password_service = PasswordService() 
+
+    def register_user(self, data: dict) -> User:
         """
         Takes validated user data dictionary, hashes the password, and saves them to the db
         """
@@ -21,7 +25,9 @@ class AuthService:
             raise ValueError("A user with this email already exists")
 
         # hashing the password
-        hashed_password = generate_password_hash(data["password"])
+        hashed_password = self.password_service.hash_password(
+            data["password"]
+        )
 
         # Instantiate New user
         new_user = User(
@@ -29,16 +35,20 @@ class AuthService:
             email=data["email"],
             password_hash=hashed_password,
             age=data["age"],
-            role=data.get("role", UserRole.STUDENT)
+            role=UserRole.STUDENT
         )
+        try: 
+            db.session.add(new_user)
+            db.session.commit()
 
-        db.session.add(new_user)
-        db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            raise
 
         return new_user
 
-    @staticmethod
-    def authenticate_user(email: str, password: str) -> dict:
+    
+    def authenticate_user(self, email: str, password: str) -> dict:
         """
         Verifies login credential and return a signed JWT access token alongside user info
         """
@@ -47,7 +57,10 @@ class AuthService:
         user = User.query.filter_by(email=email).first()
 
         # confirm credentials
-        if not user or not check_password_hash(user.password_hash, password):
+        if not user or not self.password_service.verify_password(
+            password, 
+            user.password_hash
+        ):
             raise ValueError("Invalid email or password.")
 
         # creation of the jwt
@@ -55,7 +68,7 @@ class AuthService:
 
         return {
             "access_token": access_token,
-            "user": User
+            "user": user
         }
 
 
